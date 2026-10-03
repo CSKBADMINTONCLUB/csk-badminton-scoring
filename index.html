@@ -37,6 +37,13 @@ const fixtures=[{"division": "Men", "group": "Group A", "team1": "Smash Force", 
 const key="cskBadmintonScoringDemoV14";
 // Start this release with clean, pending fixtures. Previous browser/demo scores are intentionally not migrated.
 let saved={playoffs:[]};
+try {
+  saved = JSON.parse(
+    localStorage.getItem(key) || '{"playoffs":[]}'
+  );
+} catch (e) {
+  saved = {playoffs:[]};
+}
 let matches=fixtures.map((f,i)=>({...f,id:"g"+i,sets:[{a:0,b:0}],status:"Pending",court:""})).map(m=>saved[m.id]?{...m,...saved[m.id]}:m);
 let playoffs=(saved.playoffs||[]).filter(m=>!(m.division==="Men"&&/^Men Division (?:1|2|I|II) /.test(m.stage||"")));
 [...matches,...playoffs].forEach(m=>(m.sets||[]).forEach(set=>{set.a=Math.min(maxFor(m),Math.max(0,Number(set.a)||0));set.b=Math.min(maxFor(m),Math.max(0,Number(set.b)||0));}));
