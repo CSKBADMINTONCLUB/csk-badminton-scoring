@@ -303,6 +303,35 @@ fillGroups();refresh();
 </script>
 
 
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+  import {
+    getDatabase,
+    ref,
+    set,
+    onValue
+  } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-database.js";
 
-</body></html>
+  const firebaseConfig = {
+    apiKey: "KEEP_YOUR_EXISTING_API_KEY",
+    authDomain: "csk-badminton-scoring.firebaseapp.com",
+    databaseURL: "https://csk-badminton-scoring-default-rtdb.firebaseio.com",
+    projectId: "csk-badminton-scoring",
+    storageBucket: "csk-badminton-scoring.firebasestorage.app",
+    messagingSenderId: "880485700384",
+    appId: "KEEP_YOUR_EXISTING_APP_ID"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const database = getDatabase(app);
+
+  window.cskFirebase = { database, ref, set, onValue };
+  console.log("Firebase initialized");
+</script>
+
+
+
+</body>
+
+</html>
 
