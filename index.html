@@ -292,6 +292,7 @@ $("export").onclick=()=>{let all=[...matches,...playoffs],rows=[["Division","Gro
 fillGroups();refresh();
 </script>
 
+
 </body></html>
 <body>
 <header><h1>CSK Badminton Scoring</h1><div class="sub">Live scores • Standings</div></header>
@@ -575,6 +576,7 @@ $("koWomenStandingsTab").onclick=()=>{knockoutDivision="Women";knockoutView="sta
 $("export").onclick=()=>{let all=[...matches,...playoffs],rows=[["Division","Group/Stage","Team 1","Team 1 score","Team 2","Team 2 score","Winner","Status","Court"]];all.forEach(m=>{let a=m.sets.reduce((s,x)=>s+x.a,0),b=m.sets.reduce((s,x)=>s+x.b,0);rows.push([m.division,m.group,m.team1,a,m.team2,b,outcome(m)?(outcome(m)===1?m.team1:m.team2):"",m.status,m.court])});let csv=rows.map(r=>r.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(",")).join("\r\n"),url=URL.createObjectURL(new Blob([csv],{type:"text/csv"})),a=document.createElement("a");a.href=url;a.download="csk-tournament-results.csv";a.click();URL.revokeObjectURL(url)};
 fillGroups();refresh();
 </script>
+
 
 </body>
 <script>
@@ -1140,6 +1142,7 @@ $("koWomenStandingsTab").onclick=()=>{knockoutDivision="Women";knockoutView="sta
 $("export").onclick=()=>{let all=[...matches,...playoffs],rows=[["Division","Group/Stage","Team 1","Team 1 score","Team 2","Team 2 score","Winner","Status","Court"]];all.forEach(m=>{let a=m.sets.reduce((s,x)=>s+x.a,0),b=m.sets.reduce((s,x)=>s+x.b,0);rows.push([m.division,m.group,m.team1,a,m.team2,b,outcome(m)?(outcome(m)===1?m.team1:m.team2):"",m.status,m.court])});let csv=rows.map(r=>r.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(",")).join("\r\n"),url=URL.createObjectURL(new Blob([csv],{type:"text/csv"})),a=document.createElement("a");a.href=url;a.download="csk-tournament-results.csv";a.click();URL.revokeObjectURL(url)};
 fillGroups();refresh();
 </script>
+
 
 </body>
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -1474,5 +1477,5 @@ $("export").onclick=()=>{let all=[...matches,...playoffs],rows=[["Division","Gro
 fillGroups();refresh();
 </script>
 
+
 </body></html>
-<!DOCTYPE html>
